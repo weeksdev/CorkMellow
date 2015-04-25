@@ -25,5 +25,17 @@ namespace CorkMellow
             this.DataContext = new ViewModel.MainWindow();
             InitializeComponent();
         }
+
+        private void RecordBtn_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.RecordBtn.Foreground == Brushes.Gray)
+            {
+                this.RecordBtn.Foreground = Brushes.Red;
+            }
+            else
+            {
+                this.RecordBtn.Foreground = Brushes.Gray;
+            }
+        }
     }
 }

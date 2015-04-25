@@ -2,30 +2,23 @@
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:Controls="http://metro.mahapps.com/winfx/xaml/controls"
-        Title="Cork.Mellow" Height="150" Width="525">
+        Title="Cork.Mellow" Height="400" Width="400">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
+            <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-        </Grid.ColumnDefinitions>
-        <!--<StackPanel Grid.Row="3" Grid.Column="0" Orientation="Horizontal">-->
-        <Button BorderThickness="0" Grid.Row="3" Grid.Column="0" Height="50" Width="50" Style="{DynamicResource MetroCircleButtonStyle}" Command="{Binding Path=RecordCommand}">
-                <Ellipse Width="25" Height="25" Fill="Gray"></Ellipse>
-            </Button>
-        <Button BorderThickness="0" Grid.Row="3" Grid.Column="0" Height="50" Width="50" Style="{DynamicResource MetroCircleButtonStyle}" Visibility="Hidden">
-                <Rectangle Fill="Gray" Height="25" Width="25">
-                    <Rectangle.OpacityMask>
-                        <VisualBrush  Visual="{StaticResource appbar_control_stop}" Stretch="Fill"/>
-                    </Rectangle.OpacityMask>
-                </Rectangle>
-            </Button>
-        <!--</StackPanel>-->
-        <TextBlock Text="{Binding Path=Status}" Grid.Row="3" Grid.Column="1" Height="25" Width="450"  TextAlignment="Right" VerticalAlignment="Bottom"></TextBlock>
+        <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
+            <Button BorderThickness="0" BorderBrush="White" Background="White" FontSize="75" FontFamily="pack://application:,,,/fonts/#FontAwesome" Margin="10 10 0 10" Foreground="Gray" Name="RecordBtn" Click="RecordBtn_Click" Command="{Binding Path=RecordCommand}">&#xf130;</Button>
+            <Slider Value="{Binding Path=MicrophoneVolume}" Minimum="0" Maximum="100" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Width="21" Margin="0 10 10 0" Height="75" />
+            <ProgressBar Value="{Binding CurrentInputLevel, Mode=OneWay}" Orientation="Vertical" HorizontalAlignment="Left" Margin="-5,12,0,15" Width="9" Height="Auto"/>
+        </StackPanel>
+
+        <TextBlock Text="{Binding Path=Status}" Grid.Row="3" Grid.Column="1" Height="25" Width="450"  TextAlignment="Right" VerticalAlignment="Bottom" ></TextBlock>
+
+
+
     </Grid>
 </Controls:MetroWindow>
