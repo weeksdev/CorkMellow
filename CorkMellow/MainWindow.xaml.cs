@@ -20,9 +20,11 @@ namespace CorkMellow
     /// </summary>
     public partial class MainWindow : MetroWindow
     {
+        ViewModel.MainWindow vm = new ViewModel.MainWindow();
         public MainWindow()
         {
-            this.DataContext = new ViewModel.MainWindow();
+            this.DataContext = vm;
+            //vm.WaveForm = this.WaveForm;
             InitializeComponent();
         }
 
@@ -35,6 +37,29 @@ namespace CorkMellow
             else
             {
                 this.RecordBtn.Foreground = Brushes.Gray;
+                AddWaveFormLines();
+            }
+        }
+        public void AddWaveFormLines()
+        {
+            this.WaveForm.Children.Clear();
+            var half = WaveForm.Height / 2;
+            var thickness = 2;  //WaveForm.Width / CurrentRecordingPlots.Count;
+            var currentX = 0;
+            if (WaveForm != null)
+            {
+                foreach (var plot in vm.CurrentRecordingPlots)
+                {
+                    System.Windows.Shapes.Line line = new System.Windows.Shapes.Line();
+                    line.X1 = currentX;
+                    line.X2 = currentX;
+                    line.Y1 = ((plot.Maximum / 100) * half) + half;
+                    line.Y2 = ((plot.Minimum / 100) * half) + half;
+                    line.StrokeThickness = thickness;
+                    currentX += thickness;
+                    line.Stroke = Brushes.Gray;
+                    WaveForm.Children.Add(line);
+                }
             }
         }
     }
