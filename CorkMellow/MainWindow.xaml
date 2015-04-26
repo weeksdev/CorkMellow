@@ -7,7 +7,7 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="100"/>
             <RowDefinition Height="100"/>
-            <RowDefinition Height="100"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="100"/>
         </Grid.RowDefinitions>
         <StackPanel Grid.Row="1" Orientation="Horizontal" HorizontalAlignment="Center">
@@ -15,10 +15,12 @@
             <Slider Value="{Binding Path=MicrophoneVolume}" Minimum="0" Maximum="100" Orientation="Vertical" HorizontalAlignment="Left" VerticalAlignment="Top" Width="21" Margin="0 10 10 0" Height="75" />
             <ProgressBar Value="{Binding CurrentInputLevel, Mode=OneWay}" Orientation="Vertical" HorizontalAlignment="Left" Margin="-5,12,0,15" Width="9" Height="Auto"/>
         </StackPanel>
-        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Left" Width="395">
+        <StackPanel Grid.Row="3" Orientation="Horizontal" HorizontalAlignment="Left" Width="395">
             <Button BorderThickness="0" BorderBrush="White" Background="White" FontSize="25" FontFamily="pack://application:,,,/fonts/#FontAwesome" Margin="10 10 0 10" Foreground="Gray" Name="PlayBtn" Command="{Binding Path=PlayCommand}">&#xf04b;</Button>
-            <Canvas Name="WaveForm" Height="100" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" Width="275">
-            </Canvas>
+            <ScrollViewer Height="100" Width="275" VerticalScrollBarVisibility="Hidden">
+                <Canvas Name="WaveForm" Height="100" HorizontalAlignment="Center" Grid.Row="2" VerticalAlignment="Top" Width="275">
+                </Canvas>
+            </ScrollViewer>
             <Button BorderThickness="0" BorderBrush="White" Background="White" FontSize="25" FontFamily="pack://application:,,,/fonts/#FontAwesome" Margin="30 10 0 10" Foreground="Gray" Name="SaveBtn" Command="{Binding Path=SaveCommand}" HorizontalAlignment="Right">&#xf0c7;</Button>
         </StackPanel>
         

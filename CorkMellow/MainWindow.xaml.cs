@@ -44,7 +44,7 @@ namespace CorkMellow
         {
             this.WaveForm.Children.Clear();
             var half = WaveForm.Height / 2;
-            var thickness = 2;  //WaveForm.Width / CurrentRecordingPlots.Count;
+            var thickness = (int)Math.Ceiling(WaveForm.Width / vm.CurrentRecordingPlots.Count);
             var currentX = 0;
             if (WaveForm != null)
             {
